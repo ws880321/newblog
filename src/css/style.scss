@@ -1,47 +1,250 @@
-// reset 模块
 @import "compass/reset";
-
+@import "compass/utilities/";
+@import "animation";
 body {
-    font: 12px  "Arial Narrow", HELVETICA;
-    color: #3F3E3C;
+    font-size: 12px;
+    color: #fff;
     line-height: 1.5;
     background: #333;
+    font-family: "KaiTi", "Microsoft Yahei", "Arial Narrow", HELVETICA;
 }
-// 页面 头部样式开始
-header{
-	width:100%;
-	height:70px;
-	background:#222;
-	border-bottom:#464647 1px solid;
-	nav{
-		width:1080px;
-		margin:0 auto;
-		li{
-			display: inline-block;
-			line-height: 70px;
-			a{
-				display: inline-block;
-				color: #fff;
-				text-decoration: none;
-				height: 40px;
-				line-height: 40px;
-				padding:  0 30px;
-				margin: 0 20px;
-				background:#222;
-				transition:background .5s;
-				&.active{
-					background:#000;
-					border-radius:5px;
-					box-shadow: 0px 1px 0px rgba(255,255,255,.3), inset 0px 1px 1px rgba(0,0,0,.3);
-				}
-				&:hover{
-					background:#000;
-					border-radius:5px;
-					box-shadow: 0px 1px 0px rgba(255,255,255,.3), inset 0px 1px 1px rgba(0,0,0,.3);
-				}
-			}
-		}
-	}
-}
-// 页面 头部样式结束
 
+header {
+    width: 100%;
+    height: 70px;
+    background: #222;
+    border-bottom: #464647 1px solid;
+    nav {
+        width: 1080px;
+        margin: 0 auto;
+        li {
+            display: inline-block;
+            line-height: 70px;
+            a {
+                display: inline-block;
+                color: #fff;
+                text-decoration: none;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 30px;
+                margin: 0 20px;
+                background: #222;
+                transition: background .5s;
+                &.active {
+                    background: #000;
+                    border-radius: 5px;
+                    box-shadow: 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 1px 1px rgba(0, 0, 0, .3);
+                }
+                &:hover {
+                    background: #000;
+                    border-radius: 5px;
+                    box-shadow: 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 1px 1px rgba(0, 0, 0, .3);
+                }
+            }
+        }
+    }
+}
+
+@mixin innerShadow {
+    border-radius: 5px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 1px 1px rgba(0, 0, 0, .3);
+}
+
+@mixin titleAnimate {
+    transition: margin-left 1s;
+}
+
+.main {
+    width: 100%;
+    margqqin: 0 auto;
+    border-top: 1px solid #222;
+    .personal-info {
+        width: 1080px;
+        margin: 0 auto;
+        padding-top: 30px;
+        overflow: hidden;
+        figure {
+            width: 680px;
+            height: 240px;
+            display: inline-block;
+            position: relative;
+            animation: imgpage 5s;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            figcaption {
+                position: absolute;
+                display: inline-block;
+                width: 100%;
+                height: auto;
+                bottom: 0;
+                background: #000;
+                opacity: .7;
+                color: #fff;
+                padding: 10px;
+                box-sizing: border-box;
+                right: -100%;
+                animation: textanimate 1.5s ease-in-out 5s;
+                animation-fill-mode: forwards;
+            }
+        }
+        .mycard {
+            @include innerShadow;
+            width: 380px;
+            height: 240px;
+            display: inline-block;
+            float: right;
+            color: #fff;
+            background: #222;
+            h1 {
+                font-size: 24px;
+                line-height: 2;
+                padding-left: 20px;
+                color: #ccc;
+            }
+            p {
+                line-height: 2.5;
+                font-size: 12px;
+                padding-left: 40px;
+                color: #eee;
+            }
+            ul {
+                text-align: center;
+                overflow: hidden;
+                padding-left: 20px;
+                padding-top: 20px;
+                height: 57px;
+            }
+            li {
+                display: inline-block;
+                float: left;
+                margin-right: 20px;
+                @include innerShadow;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                a {
+                    display: inline-block;
+                    width: 50px;
+                    height: 50px;
+                    color: #fff;
+                    background: url(../../src/image/icons.png) no-repeat;
+                    text-indent: -9999px;
+                }
+                &:hover a {
+                    animation: aShake .3s;
+                }
+            }
+            li:nth-of-type(1) a {
+                background-position: 12px 16px;
+            }
+            li:nth-of-type(2) a {
+                background-position: 12px -23px;
+            }
+            li:nth-of-type(3) a {
+                background-position: 12px -61px;
+            }
+            li:nth-of-type(4) a {
+                background-position: 12px -98px;
+            }
+            li:nth-of-type(5) a {
+                background-position: 12px -136px;
+            }
+        }
+    }
+    .article {
+        width: 1080px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding-top: 30px;
+        .articleList {
+            width: 700px;
+            border-right: 2px solid #222;
+            padding: 10px 0;
+        }
+    }
+    .article-item {
+        width: 665px;
+        @include innerShadow;
+        padding: 10px;
+        margin-bottom: 20px;
+        background: #222;
+        box-sizing: border-box;
+        position: relative;
+        border: 1px solid #222;
+        color: #b9b9b9;
+        min-height: 200px;
+        padding-bottom: 40px;
+        h2 {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: normal;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            transition: margin-left 1s;
+            cursor: default;
+        }
+        h2:hover {
+            margin-left: 30px;
+        }
+        p {
+            img {
+                max-width: 200px;
+                max-height: 120px;
+                display: inline;
+                float: left;
+                margin-right: 20px;
+                &:hover {
+                    opacity: .5;
+                }
+            }
+        }
+        p {
+            display: inline;
+            line-height: 24px;
+            float: left;
+            min-height: 96px;
+            @include pie-clearfix;
+        }
+    }
+    .articleInfo {
+        position: absolute;
+        height: 30px;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        line-height: 30px;
+        padding: 0 10px;
+        background: #111;
+        opacity: .7;
+        .time{
+        	display: inline-block;
+        	padding-left: 20px;
+        	background: url(../../src/image/icons.png) no-repeat 0 -198px;
+        	line-height: 30px;
+        }
+    }
+    .article-item:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 20px solid #1B1A1A;
+        border-right: 20px solid transparent;
+        position: absolute;
+        right: -20px;
+        top: 20px;
+    }
+    .article-item:before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #1B1A1A;
+        position: absolute;
+        right: -45px;
+        border: 3px solid #333;
+        top: 14px;
+    }
+}
